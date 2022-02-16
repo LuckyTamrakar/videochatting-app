@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Video Chatting App</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="icon" href="https://i.pinimg.com/originals/5f/8c/cf/5f8ccf30ad5706df5f316f23f0b3d16b.png">
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+    <!-- message here -->
+    <script>
+    
+    {% if messages %} {% for message in messages %}
+
+    <script>
+        alert("{{ message }}");
+    </script>
+
+    {% endfor %} {% endif %}
+
+    <!--_______________________________________________-->
+
+    {% block css %}
+    <style>
+        .hello {
+            background-color: black;
+        }
+        
+        .head1 {
+            color: #FBAD30;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .head2 {
+            color: #EF4926;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .head8 {
+            color: #FBAD30;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        .head9 {
+            color: #EF4926;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .head3 {
+            color: #FBAD30;
+            font-weight: bold;
+        }
+        
+        .head4 {
+            color: #EF4926;
+            font-weight: bold;
+        }
+        
+        .rows {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .card {
+            margin: 70px;
+            color: white;
+        }
+        
+        .copy p {
+            text-align: center;
+        }
+        
+        .copy li {
+            display: inline-block;
+            margin: 5px;
+            justify-content: center;
+            align-items: center;
+            right: 40px;
+            bottom: 50px;
+            list-style: none;
+            padding: 20px;
+            font-size: 50px;
+            width: 50px;
+            text-decoration: none;
+            border-radius: 50%;
+        }
+        
+        #confirm {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 500px;
+            height: 330px;
+            left: 35%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirm1 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 500px;
+            height: 330px;
+            left: 35%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .btn {
+            padding: 8px 30px;
+            margin: 30px 0;
+            background-color: #ff523b;
+            color: #fff;
+            border: 2px solid yellow;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transition: 0.6s;
+            background-color: black;
+        }
+        
+        #confirm2 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 500px;
+            height: 330px;
+            left: 35%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirm3 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 500px;
+            height: 330px;
+            left: 35%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirm4 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 500px;
+            height: 330px;
+            left: 35%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirm5 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 500px;
+            height: 330px;
+            left: 35%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirmes {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 500px;
+            height: 430px;
+            left: 35%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirmes1 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 500px;
+            height: 290px;
+            left: 35%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .submit {
+            background-color: black;
+            display: inline-block;
+            color: white;
+            border-radius: 12px;
+            border: 4px solid rgb(237, 243, 239);
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+        }
+        
+        .cancel {
+            background-color: #0a0a0a;
+            display: inline-block;
+            color: white;
+            border-radius: 12px;
+            border: 4px solid rgb(237, 243, 239);
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+        }
+        
+        #confirm .message {
+            text-align: center;
+            margin: auto;
+            padding: 10px;
+        }
+        
+        #confirmes .messagess {
+            text-align: left;
+            margin: auto;
+            padding: 10px;
+        }
+        
+        #confirmes1 .messagess1 {
+            text-align: center;
+            margin: auto;
+            padding: 10px;
+        }
+        
+        .cancel:hover {
+            background-color: red;
+        }
+        
+        .submit:hover {
+            background-color: rgb(23, 236, 15);
+        }
+        
+        .brands {
+            margin: 100px auto;
+        }
+        
+        .col-5 {
+            width: 160px;
+        }
+        
+        .col-5 img {
+            width: 100%;
+            cursor: pointer;
+            filter: grayscale(100%);
+        }
+        
+        .col-5 img:hover {
+            filter: grayscale(0%);
+        }
+        
+        .rowss {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .sm {
+            max-width: 980px;
+            margin: auto;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .containers {
+            padding-left: 45px;
+            padding-right: 45px;
+            max-width: 1300px;
+            margin: auto;
+        }
+        
+        .foot {
+            background-color: #000;
+            color: #8a8a8a;
+            font-size: 14px;
+            padding: 60px 0 20px;
+        }
+        
+        .foot p {
+            columns: #8a8a8a;
+        }
+        
+        .foot h3 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        
+        .foot-col-1,
+        .foot-col-2,
+        .foot-col-3,
+        .foot-col-4 {
+            margin-bottom: 20px;
+            min-width: 250px;
+        }
+        
+        .foot-col-1 {
+            flex-basis: 30%;
+        }
+        
+        .foot-col-2 {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .foot-col-2 img {
+            width: 180px;
+            margin-bottom: 20px;
+        }
+        
+        .foot-col-4 li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px;
+            text-align: center;
+            color: blue;
+        }
+        
+        .foot-col-4 li a {
+            color: blue;
+            font-size: 40px;
+        }
+        
+        .app-logo {
+            margin-top: 20px;
+        }
+        
+        .app-logo img {
+            width: 140px;
+        }
+        
+        .icon-barss {
+            position: fixed;
+            top: 90%;
+            right: 5%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        /* Style the icon bar links */
+        
+        .icon-barss a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+        }
+        /* Style the social media icons with color, if you want */
+        
+        .icon-barsss {
+            position: fixed;
+            top: 90%;
+            left: 5%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        
+        
+        .icon-barsss a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .a img {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 0%;
+        }
+            
+        
+        @media only screen and (max-width: 600px){
+            #confirm {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 300px;
+            height: 430px;
+            left: 9%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+            }
+            .icon-barss {
+            position: fixed;
+            top: 90%;
+            right: 0%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        /* Style the icon bar links */
+        
+        .icon-barss a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+        }
+        /* Style the social media icons with color, if you want */
+        
+        .icon-barsss {
+            position: fixed;
+            top: 90%;
+            left: 0%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        
+        
+        .icon-barsss a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 20px;
+        }
+        .card{
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            right: 23%;
+        }
+        #confirm1 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 300px;
+            height: 430px;
+            left: 9%;
+            top: 0%;;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .btn {
+            padding: 8px 30px;
+            margin: 30px 0;
+            background-color: #ff523b;
+            color: #fff;
+            border: 2px solid yellow;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transition: 0.6s;
+            background-color: black;
+        }
+        
+        #confirm2 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 300px;
+            height: 430px;
+            left: 9%;
+            top: 0%;;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirm3 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 300px;
+            height: 430px;
+            left: 9%;
+            top: 0%;;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirm4 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 300px;
+            height: 430px;
+            left: 9%;
+            top: 0%;;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirm5 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 300px;
+            height: 430px;
+            left: 9%;
+            top: 0%;;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirmes {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 350px;
+            height: 510px;
+            left: 4%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        #confirmes1 {
+            display: none;
+            background-color: #0a0a0a;
+            color: #faefef;
+            border: 4px solid rgb(14, 80, 224);
+            position: fixed;
+            border-radius: 15px;
+            width: 350px;
+            height: 310px;
+            left: 4%;
+            top: 0%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        
+        .submit {
+            background-color: black;
+            display: inline-block;
+            color: white;
+            border-radius: 12px;
+            border: 4px solid rgb(237, 243, 239);
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+        }
+        
+        .cancel {
+            background-color: #0a0a0a;
+            display: inline-block;
+            color: white;
+            border-radius: 12px;
+            border: 4px solid rgb(237, 243, 239);
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+        }
+        
+        #confirm .message {
+            text-align: center;
+            margin: auto;
+            padding: 10px;
+        }
+        
+        #confirmes .messagess {
+            text-align: left;
+            margin: auto;
+            padding: 10px;
+        }
+        
+        #confirmes1 .messagess1 {
+            text-align: center;
+            margin: auto;
+            padding: 10px;
+        }
+        
+        .cancel:hover {
+            background-color: red;
+        }
+        
+        .submit:hover {
+            background-color: rgb(23, 236, 15);
+        }
+        }
+    </style>
+    <script>
+        function functionAlert(msg, myYes) {
+            var confirmBox = $("#confirm");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+
+        function functionAlert6(msg, myYes) {
+            var confirmBox = $("#confirm1");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+
+        function functionAlert2(msg, myYes) {
+            var confirmBox = $("#confirm2");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+
+        function functionAlert3(msg, myYes) {
+            var confirmBox = $("#confirm3");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+
+        function functionAlert4(msg, myYes) {
+            var confirmBox = $("#confirm4");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+
+
+
+        function functionAlert5(msg, myYes) {
+            var confirmBox = $("#confirm5");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+
+        function functionAlerts(msg, myYes) {
+            var confirmBox = $("#confirmes");
+            confirmBox.find(".messagess").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+
+
+
+        function functionAlert1(msg, myYes) {
+            var confirmBox = $("#confirms");
+            confirmBox.find(".message").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+
+        function myalert(msg, myYes) {
+            var confirmBox = $("#confirmes1");
+            confirmBox.find(".messagess1").text(msg);
+            confirmBox.find(".yes").unbind().click(function() {
+                confirmBox.hide();
+            });
+            confirmBox.find(".yes").click(myYes);
+            confirmBox.show();
+        }
+    </script>
+    {% endblock %}
+
+</head>
+
+<body class="container-fluid">
+
+
+    <header class="row">
+
+        <!-- navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">
+                    <img src="https://i.pinimg.com/originals/5f/8c/cf/5f8ccf30ad5706df5f316f23f0b3d16b.png" alt="" width="40" height="40">
+                    <span class="head1" style="color: #FBAD30; font-size: 25px; font-weight: bold;">Video </span><span class="head2" style="color: #EF4926; font-size: 25px; font-weight: bold;">ChattingApp</span>
+                </a>
+              <a class="navbar-brand" href="/"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item"><a class="nav-link " href="/contact">Contact Us</a></li>
+                  <li class="nav-item"><a class="nav-link " href="/about">About Us</a></li>
+                
+                </ul>
+                <ul class="navbar-nav justify-content-end">
+                                {% if user.is_superuser %}
+                                <li class="nav-item"><a class="nav-link " href="/admin/">Go to Database</a></li>
+                                {% endif %}
+                                {% if user.is_authenticated %}
+
+                                <li class="nav-item"><a class="nav-link " href=""> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                  </svg>&nbsp;  Welcome {{user.username}}</a></li>
+                                <li class="nav-item"><a class="nav-link " href="{% url 'logout' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
+                                    <path d="M7.5 1v7h1V1h-1z"/>
+                                    <path d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"/>
+                                  </svg> &nbsp; Logout</a></li>
+                                {% else %}
+                                <li class="nav-item"><a class="nav-link " href="{% url 'register' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                                  </svg> &nbsp; Sign up</a></li>
+                                <li class="nav-item"><a class="nav-link " href="{% url 'login' %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                                  </svg></span> &nbsp; Log in</a></li>
+                            </ul>
+                            {% endif %}
+                    
+
+        
+                    
+            
+            </div>
+          </nav>
+    </header>
+	{% if user.is_authenticated %}
+	  <div class="container">
+	<h3 id="label-username">NAME</h3>
+	<div>
+		<input id="username"><button id="btn-join">Join Room</button>
+	</div>
+	<br><br>
+	<div class="main-grid-container">
+		<!-- for grid layout
+		assign class video-grad-layout -->
+		<div id="video-container">
+			<div><video id="local-video" style="float: left; border: 2px solid red; border-radius: 200px;" autoplay playsinline></video></div>
+			<button id="btn-toggle-audio" class="btn btn-primary btns">Audio Mute</button>
+			<button id="btn-toggle-video" class="btn btn-primary btns">Video Off</button>
+		</div>
+		<div id="chat" style="float: right;">
+			<h3> CHAT </h3>
+			<div id="messages">
+				<ul id="message-list"></ul>
+			</div>
+			<div id="ct"><input id="msg"><button id="btn-send-msg" class="btn btn-primary btns">send</button></div>
+			<br>
+			<button id="btn-share-screen">Share Screen</button>
+			
+			<button id="btn-record-screen" class="btn btn-primary btns">Record Screen</button>
+			
+			<button class="view-button" id="share-file-button" class="btn btn-primary btns">Share File</button>
+			<div id="select-file-dialog" style="display: none;">
+				<div id="dialog-content">
+				  <div id="select-file">
+					<div id="label">Select a file:</div>
+					<input type="file" id="select-file-input">
+				  </div>
+				  <div id="dialog-footer">
+					<button id="ok-button" class="btn btn-primary btns" disabled>Ok</button>
+					<button id="cancel-button" class="cancel-button btn-primary btns">Cancel</button>
+				  </div>
+				</div>
+			  </div>
+		</div>
+	</div>
+</div>
+{% else %}
+<h1 style="margin: auto; color: black;">Please Login !!!</h1>
+{% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
